@@ -86,4 +86,44 @@ namespace cinder { namespace app {
         return "Unknown";
     }
     
+    int getRotationSteps(const Orientation &from, const Orientation &to)
+    {
+        if (from == to) {
+            return 0;
+        }
+        
+        switch(from) {
+            case PORTRAIT_ORIENTATION:
+                switch(to) {
+                    case LANDSCAPE_LEFT_ORIENTATION: return 1;
+                    case LANDSCAPE_RIGHT_ORIENTATION: return -1;
+                    case UPSIDE_DOWN_PORTRAIT_ORIENTATION: return 2;
+                    default: return 0;
+                }
+            case LANDSCAPE_LEFT_ORIENTATION:
+                switch(to) {
+                    case PORTRAIT_ORIENTATION: return -1;
+                    case LANDSCAPE_RIGHT_ORIENTATION: return 2;
+                    case UPSIDE_DOWN_PORTRAIT_ORIENTATION: return 1;
+                    default: return 0;
+                }
+            case LANDSCAPE_RIGHT_ORIENTATION:
+                switch(to) {
+                    case PORTRAIT_ORIENTATION: return 1;
+                    case LANDSCAPE_LEFT_ORIENTATION: return 2;
+                    case UPSIDE_DOWN_PORTRAIT_ORIENTATION: return -1;
+                    default: return 0;
+                }
+            case UPSIDE_DOWN_PORTRAIT_ORIENTATION:
+                switch(to) {
+                    case PORTRAIT_ORIENTATION: return 2;
+                    case LANDSCAPE_LEFT_ORIENTATION: return -1;
+                    case LANDSCAPE_RIGHT_ORIENTATION: return 1;
+                    default: return 0;
+                }
+            default:
+                return 0;
+        }
+    }
+    
 } }

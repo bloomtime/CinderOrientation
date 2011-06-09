@@ -36,5 +36,7 @@ namespace cinder { namespace app {
     Matrix44f getOrientationMatrix44(const Orientation &orientation, const Vec2f &deviceSize);
 
     std::string getOrientationString(const Orientation &orientation);
+
+    int getRotationSteps(const Orientation &from, const Orientation &to);
     
 } }
