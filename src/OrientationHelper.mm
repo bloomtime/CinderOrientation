@@ -25,7 +25,8 @@ namespace cinder { namespace app {
     {
         // set this here to ensure it's accessible from getDeviceOrientation in setup:
         mDeviceOrientation = Orientation([[UIDevice currentDevice] orientation]);
-        // use status bar orientation to force a valid interface orientation on startup:
+
+        // use status bar orientation to find a valid interface orientation on startup:
         mInterfaceOrientation = Orientation([UIApplication sharedApplication].statusBarOrientation);
         
         setupNotifications(this);
